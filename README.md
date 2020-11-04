@@ -1,6 +1,7 @@
 # README
 
 ## Notes
+
 time ago in words for created at timestamps
 twilio for chat
 foreign keys sit on belongs_to tables. they are whatever it belongs to '_id' eg. restaurant_id
@@ -21,7 +22,6 @@ put the JS in application view
 stripe needs a controller and skip before_action
 initializers/stripe.rb needs Stripe.api_key =
 embed ruby for JS portion of key dig
-
 
 ## R12 - User stories
 
@@ -98,3 +98,9 @@ Authentication & Authorisation:
 ### Payment Success
 
 ![wireframe-payment-success](readme-images/wire-success.png)
+
+## R20 - Trello
+
+Initial Trello board on November 5th. Readme tasks are well defined but app tasks need to be further fleshed out as I approach aspects of the build.
+
+![trello-november-5th](readme-images/trello-nov5.png)
