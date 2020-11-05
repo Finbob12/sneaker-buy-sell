@@ -1,1 +1,17 @@
-<h1>home</h1>
+<h2>Shoes</h2>
+<%# <%= link_to "Create a new listing 👟", new_restaurant_path %>
+
+<% @listings.each do |listing| %>
+  <div>
+    <h3>Brand: <%= listing.brand %></h3>
+    <h3>Style: <%= listing.style %></h3>
+    <h3>Size: <%= listing.size %></h3>
+    <h3>Description: <%= listing.description %></h3>
+
+    <h4>Created by <%= listing.user.username %></h4>
+    <%= link_to "Show", listing_path(listing.id)  %>
+    <% if user_signed_in? && current_user.listings.include?(listing) %>
+      <%= link_to "Delete", listing_path(listing.id), method: :delete %>
+    <% end %>
+  </div>
+<% end %>
