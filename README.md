@@ -23,6 +23,8 @@ stripe needs a controller and skip before_action
 initializers/stripe.rb needs Stripe.api_key =
 embed ruby for JS portion of key dig
 
+DEVISE - FAKER
+
 ## R12 - User stories
 
 The app does not distinguish between buyers and sellers, all profiles are set with the ability to create or purchase listings however the user stories are broken down between buyers and sellers to show different app functions.
