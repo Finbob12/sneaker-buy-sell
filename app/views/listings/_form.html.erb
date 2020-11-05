@@ -1,0 +1,24 @@
+<%= form_with(model: @listing) do |f| %>
+  <%= f.label :brand %>
+  <%= f.text_field :brand %>
+  <br>
+  <br>
+  <%= f.label :style %>
+  <%= f.text_field :style %>
+  <br>
+  <br>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <br>
+  <br>
+  <%= f.label :size %>
+  <%= f.number_field :size %>
+  <br>
+  <br>
+  <%= f.label :description %>
+  <br>
+  <%= f.text_area(:text, size: '50x10', placeholder: "Please describe your shoes here. Age, condition etc...") %>
+  <br>
+  <br>
+  <%= f.submit "Create" %>
+<% end %>
