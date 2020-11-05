@@ -12,8 +12,8 @@ class ListingsController < ApplicationController
     end
     
     def create
-        current_user.listings.create(listing_params) #this wont work until devise done
-        redirect_to listings_path
+        current_user.listings.create(listing_params)
+        redirect_to listings_path, notice: "Listing was successfully created"
     end
 
     def destroy
@@ -21,7 +21,11 @@ class ListingsController < ApplicationController
         if @listing.present?
           @listing.destroy
         end
-        redirect_to root_url
+        redirect_to root_url, notice: "Listing was successfully deleted"
+    end
+
+    def manage_listings
+        @listings = Listing.all
     end
     
 private
