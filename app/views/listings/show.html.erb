@@ -7,4 +7,26 @@
 
     <h4>Created by <%= @listing.user.username %></h4>
 </div>
+    <div>
+      <% if @payment_button %>
+        <div>
+          <button data-stripe="payment">
+            <h4>Buy now</h4>
+          </button>
+        <% end %>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+          document
+            .querySelector("[data-stripe='payment']")
+            .addEventListener("click", () => {
+              const stripe = Stripe(
+                "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+              );
+          
+              stripe.redirectToCheckout({
+                sessionId: "<%= @session_id %>"
+              });
+            });
+        </script>
+      </div>
 <%= link_to "Back", listings_path %>

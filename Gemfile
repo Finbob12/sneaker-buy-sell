@@ -55,3 +55,4 @@ end
 
 gem 'devise'
 gem 'faker'
+gem 'stripe'
