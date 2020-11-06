@@ -1,3 +1,18 @@
-<div>
-  <h1>My Account</h1>
-</div>
+<h1>My Account</h1>
+  <% current_user.listings.each do |listing| %>
+  <div>
+    <h3>Brand: <%= listing.brand %></h3>
+    <h3>Style: <%= listing.style %></h3>
+    <h3>Size: <%= listing.size %></h3>
+    <h3>Price: <%= listing.price %></h3>
+    <h3>Description: <%= listing.description %></h3>
+    <%= image_tag(listing.picture) if listing.picture.attached? %>
+      <br>
+    <%= link_to "Show", listing_path(listing.id)  %>
+      <% if user_signed_in? && current_user.listings.include?(listing) %>
+    <%= link_to "Delete", listing_path(listing.id), method: :delete %>
+    <% end %>
+      <br>
+      <br>
+  <% end %>
+  </div>

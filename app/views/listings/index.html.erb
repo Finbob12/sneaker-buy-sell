@@ -1,5 +1,4 @@
 <h2>Shoes</h2>
-<%= link_to "Create a new listing", new_listing_path %>
 
 <% @listings.each do |listing| %>
   <div>
@@ -13,8 +12,5 @@
 
     <h4>Created by <%= listing.user.username %></h4>
     <%= link_to "Show", listing_path(listing.id)  %>
-    <% if user_signed_in? && current_user.listings.include?(listing) %>
-      <%= link_to "Delete", listing_path(listing.id), method: :delete %>
-    <% end %>
   </div>
 <% end %>
