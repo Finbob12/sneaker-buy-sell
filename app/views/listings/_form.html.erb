@@ -15,9 +15,13 @@
   <%= f.number_field :size %>
   <br>
   <br>
+  <%= f.label :picture %>
+  <%= f.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+  <br>
+  <br>
   <%= f.label :description %>
   <br>
-  <%= f.text_area(:text, size: '50x10', placeholder: "Please describe your shoes here. Age, condition etc...") %>
+  <%= f.text_area(:description, size: '50x10', placeholder: "Please describe your shoes here. Age, condition etc...") %>
   <br>
   <br>
   <%= f.submit "Create" %>

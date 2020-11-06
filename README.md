@@ -23,7 +23,7 @@ stripe needs a controller and skip before_action
 initializers/stripe.rb needs Stripe.api_key =
 embed ruby for JS portion of key dig
 
-DEVISE - FAKER - STRIPE - ULTRAHOOK
+DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3
 
 ## R12 - User stories
 

@@ -4,7 +4,7 @@
     <h3>Size: <%= @listing.size %></h3>
     <h3>Price: <%= @listing.price %></h3>
     <h3>Description: <%= @listing.description %></h3>
-
+    <%= image_tag(@listing.picture) if @listing.picture.attached? %>
     <h4>Created by <%= @listing.user.username %></h4>
 </div>
     <div>
