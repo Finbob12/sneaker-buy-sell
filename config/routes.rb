@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "listings#index"
   resources :listings
-  get "/manage", to: "listings#manage_listings", as: "manage_listings"
+  get "/account", to: "listings#account", as: "account"
   get "/payments/success", to: "payments#success"
   post "/payments/webhook", to: "payments#webhook"
 end
