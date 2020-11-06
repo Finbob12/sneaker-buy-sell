@@ -54,5 +54,9 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+
 gem 'faker'
+
 gem 'stripe'
+
+gem "ultrahook", "~> 0.1.5"
