@@ -1,27 +1,27 @@
 <%= form_with(model: @listing) do |f| %>
   <%= f.label :brand %>
-  <%= f.text_field :brand %>
+  <%= f.text_field :brand, required: true %>
   <br>
   <br>
   <%= f.label :style %>
-  <%= f.text_field :style %>
+  <%= f.text_field :style, required: true %>
   <br>
   <br>
   <%= f.label :price %>
-  <%= f.number_field :price %>
+  <%= f.number_field :price, min: 0, required: true %>
   <br>
   <br>
   <%= f.label :size %>
-  <%= f.number_field :size %>
+  <%= f.number_field :size, min: 1, max: 25, required: true %>
   <br>
   <br>
   <%= f.label :picture %>
-  <%= f.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+  <%= f.file_field :picture, required: true, accept: 'image/png, image/jpg, image/jpeg' %>
   <br>
   <br>
-  <%= f.label :description %>
-  <br>
-  <%= f.text_area(:description, size: '50x10', placeholder: "Please describe your shoes here. Age, condition etc...") %>
+  <%= f.label :description %><br>
+  <%= f.text_area :description, required: true %>
+    <small class="form-text text-muted">Describe your shoes in as much detail as you can. Age, condition etc..</small>
   <br>
   <br>
   <%= f.submit "Create" %>
