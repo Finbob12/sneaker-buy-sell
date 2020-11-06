@@ -8,11 +8,11 @@
   <br>
   <br>
   <%= f.label :price %>
-  <%= f.number_field :price, min: 0, required: true %>
+  <%= f.number_field :price, min: 0, max: 50000, required: true %> ($AUD)
   <br>
   <br>
   <%= f.label :size %>
-  <%= f.number_field :size, min: 1, max: 25, required: true %>
+  <%= f.number_field :size, min: 1, max: 25, required: true %> (US mens)
   <br>
   <br>
   <%= f.label :picture %>
