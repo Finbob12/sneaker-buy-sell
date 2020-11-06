@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "listings#index"
   resources :listings
   get "/manage", to: "listings#manage_listings", as: "manage_listings"
+  get "/payments/success", to: "payments#success"
 end
