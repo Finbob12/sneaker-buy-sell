@@ -23,6 +23,7 @@
     <%= link_to "Show", listing_path(listing.id)  %>
       <% if user_signed_in? && current_user.listings.include?(listing) %>
     <%= link_to "Delete", listing_path(listing.id), method: :delete %>
+    <%= link_to "Edit", edit_listing_path(listing.id) %>
     <% end %>
       <br>
       <br>
