@@ -1,3 +1,4 @@
+
 <!-- Carousel elements start here -->
 
 <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -34,9 +35,8 @@
 
 <!-- Listings display -->
 
-<div class="row row-cols-1 row-cols-md-3">
+<div class="row row-cols-1 row-cols-md-4">
     <% @listings.each do |listing| %>
-    <div class="col-md-4">
         <div class="card h-100">
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
         <div class="card-body">
@@ -46,7 +46,6 @@
             <p class="card-text">Description: <%= listing.description %></p>
             <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%m/%d/%Y") %></small></p>
             <%= link_to "Show", listing_path(listing.id)  %>
-        </div>
         </div>
     </div>
     <% end %>
