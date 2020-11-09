@@ -19,6 +19,8 @@
       <% if user_signed_in? %>
         <span>Hello <%= current_user.username %></span>
         <%= link_to "My Account", account_path  %>
+          <%# METHOD IN APPLICATION HELPER - DISPLAYS MESSAGE ALERTS %>
+          <%= get_message_alerts(current_user) %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Login", new_user_session_path  %>
