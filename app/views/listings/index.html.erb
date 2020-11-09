@@ -1,27 +1,53 @@
-<h2>Shoes</h2>
+<!-- Carousel elements start here -->
 
-<% @listings.each do |listing| %>
-  <div class="main-container">
-    <div class="display-card">
-        <h3>Brand: <%= listing.brand %></h3>
-    </div>
-    <div class="display-card">
-        <h3>Style: <%= listing.style %></h3>
-    </div>
-    <div class="display-card">
-        <h3>Size: <%= listing.size %> (US mens)</h3>
-    </div>
-    <div class="display-card">
-        <h3>Price: A$<%= listing.price %></h3>
-    </div>
-    <div class="display-card">
-        <h3>Description: <%= listing.description %></h3>
-    </div>
-    <div class="display-card">
-        <%= image_tag(listing.picture, class: "shoe-pic") if listing.picture.attached? %>
-    </div>
+<div id="carousel" class="carousel slide" data-ride="carousel">
 
-    <h4>Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%m/%d/%Y") %></h4>
-    <%= link_to "Show", listing_path(listing.id)  %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" id="carousel_images">
+    <% @listings.each_with_index do |listing| %>
+      <div class="carousel-item<%= " active" if listing == @listings.first %>">
+        <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
+        <div class="carousel-caption">
+          <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= link_to image_tag(listing.picture, class: "carousel-shoe-pic") %>
+        <div class="carousel-caption">
+          <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <!-- Controls -->
+  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Carousel elements end here -->
+
+<!-- Listings display -->
+
+<div class="row row-cols-1 row-cols-md-3">
+    <% @listings.each do |listing| %>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
+        <div class="card-body">
+            <h5 class="card-title"><%= listing.brand %> <%= listing.style %></h5>
+            <p class="card-text">Size: <%= listing.size %> (US mens)</p>
+            <p class="card-text">Price: A$<%= listing.price %></p>
+            <p class="card-text">Description: <%= listing.description %></p>
+            <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%m/%d/%Y") %></small></p>
+            <%= link_to "Show", listing_path(listing.id)  %>
+        </div>
+        </div>
+    </div>
+    <% end %>
+</div>
