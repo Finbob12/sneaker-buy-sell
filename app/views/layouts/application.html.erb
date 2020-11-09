@@ -11,9 +11,10 @@
   </head>
 
   <body>
+    <h1 class="main-heading">K i c k S w a p</h1>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav class="navbar navbar-light sticky-top">
+    <nav class="navbar sticky-top">
     <%= link_to "All Shoes", listings_path  %>
     <%= link_to "Sell Some Shoes", new_listing_path %>
       <% if user_signed_in? %>

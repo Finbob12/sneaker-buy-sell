@@ -16,21 +16,34 @@
 
 @import "bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 @mixin roboto {
     font-family: 'Roboto', sans-serif;
 }
 
-.navbar {
-    background-color: #e3f2fd;
+@mixin lato {
+    font-family: 'Lato', sans-serif;
+}
+
+@mixin staatliches {
+    font-family: 'Staatliches', cursive;
+}
+
+.main-heading {
+    @include staatliches;
+    position: relative;
+    left: 50px;
+    top: 20px;
 }
 
 h3 {
-    @include roboto;
+    @include lato;
 }
 
 p {
-    @include roboto;
+    @include lato;
 }
 
 .carousel-shoe-pic {
@@ -41,6 +54,7 @@ p {
 .card-img-top {
     width: 400px;
     height: 300px;
+    margin: auto;
 }
 
 #carousel_images {
@@ -54,9 +68,9 @@ p {
 }
 
 .carousel-caption {
-    color: #fff;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-    @include roboto;
+    color: black;
+    text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+    @include lato;
     right: 0;
     bottom: 0;
     position: absolute;
