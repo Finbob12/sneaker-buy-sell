@@ -38,11 +38,23 @@
     top: 20px;
 }
 
+.mx-auto {
+    @include staatliches;
+}
+
 h3 {
     @include lato;
 }
 
 p {
+    @include lato;
+}
+
+.navbar {
+    @include lato;
+}
+
+.greeting {
     @include lato;
 }
 
@@ -68,9 +80,8 @@ p {
 }
 
 .carousel-caption {
-    color: black;
     text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
-    @include lato;
+    @include staatliches;
     right: 0;
     bottom: 0;
     position: absolute;
@@ -83,3 +94,13 @@ p {
     height: 50px;
     width: 50px;
 }
+
+@media (min-width: 768px) {
+    .navbar-brand.abs
+        {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+    }

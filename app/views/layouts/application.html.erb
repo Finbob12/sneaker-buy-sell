@@ -14,20 +14,51 @@
     <h1 class="main-heading">K i c k S w a p</h1>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav class="navbar sticky-top">
-    <%= link_to "All Shoes", listings_path  %>
-    <%= link_to "Sell Some Shoes", new_listing_path %>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link">
+              <%= link_to "All Shoes", listings_path %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= link_to "Sell Some Shoes", new_listing_path %>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="<%= listings_path %>">K I C K S W A P</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <% if user_signed_in? %>
-        <span>Hello <%= current_user.username %></span>
-        <%= link_to "My Account", account_path  %>
-          <%# METHOD IN APPLICATION HELPER - DISPLAYS MESSAGE ALERTS %>
-          <%= get_message_alerts(current_user) %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-link">
+              <%= link_to "My Account", account_path  %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= get_message_alerts(current_user) %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
       <% else %>
-        <%= link_to "Login", new_user_session_path  %>
-        <%= link_to "Sign up", new_user_registration_path  %>
+      <ul class="navbar-nav ml-auto">
+            <li class="nav-item nav-link">
+              <%= link_to "Login", new_user_session_path %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
       <% end %>
-    </nav>
+        </ul>
+        </ul>
+    </div>
+</nav>
+      <% if user_signed_in? %>
+        <span class="greeting">Hello <%= current_user.username %></span>
+      <% end %>
     <%= yield %>
   </body>
 </html>
