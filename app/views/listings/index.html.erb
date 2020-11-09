@@ -8,13 +8,7 @@
     <% @listings.each_with_index do |listing| %>
       <div class="carousel-item<%= " active" if listing == @listings.first %>">
         <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
-        <div class="carousel-caption">
-          <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= link_to image_tag(listing.picture, class: "carousel-shoe-pic") %>
-        <div class="carousel-caption">
+        <div class="carousel-caption text-dark">
           <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
         </div>
       </div>
