@@ -1,9 +1,11 @@
 <h1 class="sub-heading d-flex justify-content-center">My Account</h1>
-<%= link_to "Edit Account Details", edit_user_registration_path %>
+<div class="btn btn-outline-secondary bg-dark btn-sm" role="button" aria-pressed="true">
+  <%= link_to "Edit Account Details", edit_user_registration_path, class: "btn-style" %>
+</div>
 <div class="row row-cols-1 row-cols-md-4">
     <% current_user.listings.each do |listing| %>
         <div class="card h-100">
-          <%= link_to  listing_path(listing.id) do %>
+          <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
           <% end %>
           <div class="card-body">
@@ -11,8 +13,12 @@
             <p class="card-text">Size: <%= listing.size %> (US mens)</p>
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
-            <%= link_to "Delete", listing_path(listing.id), method: :delete %>
-            <%= link_to "Edit", edit_listing_path(listing.id) %>
+            <div class="btn btn-outline-secondary btn-sm" role="button" aria-pressed="true">
+              <%= link_to "Delete", listing_path(listing.id), method: :delete %>
+            </div>
+            <div class="btn btn-outline-secondary btn-sm" role="button" aria-pressed="true">
+              <%= link_to "Edit", edit_listing_path(listing.id) %>
+            </div>
             <p class="card-text"><small class="text-muted">You created this listing on <%= listing.created_at.strftime("%d/%m/%Y") %></small></p>
           </div>
         </div>

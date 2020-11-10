@@ -5,7 +5,7 @@ module ApplicationHelper
         unread_messages = Message.where("user_id != ? AND read = ?", current_user.id, false).where(conversation_id: [conversations]).count
      
         if unread_messages == 0
-            return link_to "Messages", conversations_path
+            return link_to "Messages", conversations_path, class: "btn btn-warning"
         else
            return link_to "Messages", conversations_path
         end
