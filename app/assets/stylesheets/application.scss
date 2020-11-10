@@ -38,8 +38,17 @@
     top: 20px;
 }
 
+.sub-heading {
+    @include staatliches;
+}
+
 .mx-auto {
     @include staatliches;
+}
+
+.navbar-dark .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    text-decoration: none;
 }
 
 h3 {

@@ -7,8 +7,9 @@
   <div class="carousel-inner" id="carousel_images">
     <% @listings.each_with_index do |listing| %>
       <div class="carousel-item<%= " active" if listing == @listings.first %>">
-        <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
-        <div class="carousel-caption text-dark">
+          <%= link_to  listing_path(listing.id) do %>
+            <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
+          <% end %>        <div class="carousel-caption text-dark">
           <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
         </div>
       </div>
@@ -32,14 +33,15 @@
 <div class="row row-cols-1 row-cols-md-4">
     <% @listings.each do |listing| %>
         <div class="card h-100">
+          <%= link_to  listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
+          <% end %>
         <div class="card-body">
             <h5 class="card-title"><%= listing.brand %> <%= listing.style %></h5>
             <p class="card-text">Size: <%= listing.size %> (US mens)</p>
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
-            <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%m/%d/%Y") %></small></p>
-            <%= link_to "Show", listing_path(listing.id)  %>
+            <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%d/%m/%Y") %></small></p>
         </div>
     </div>
     <% end %>

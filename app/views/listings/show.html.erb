@@ -17,7 +17,7 @@
     <div class="display-card">
         <%= image_tag(@listing.picture, class: "shoe-pic") if @listing.picture.attached? %>
     </div>
-    <h4>Listed by <%= @listing.user.username %> on <%= @listing.created_at.strftime("%m/%d/%Y") %></h4>
+    <h4>Listed by <%= @listing.user.username %> on <%= @listing.created_at.strftime("%d/%m/%Y") %></h4>
 </div>
     <div>
       <% if @payment_button %>
