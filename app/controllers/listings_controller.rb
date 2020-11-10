@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index]
     before_action :listing_params, only: [:create]
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
@@ -8,10 +8,7 @@ class ListingsController < ApplicationController
     end
 
     def show
-        if @listing.sold then redirect_to listings_path
-          elsif current_user.id != @listing.user.id
-
-            @payment_button = true
+            @payment_button = true if user_signed_in?
         session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
             customer_email: current_user.email,
@@ -33,7 +30,6 @@ class ListingsController < ApplicationController
         )
     
         @session_id = session.id
-        end
     end
 
     def new 

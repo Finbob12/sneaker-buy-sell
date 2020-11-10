@@ -1,23 +1,20 @@
-  <div class="main-container">
-    <div class="display-card">
-        <h3>Brand: <%= @listing.brand %></h3>
+<div class="row row-cols-1 row-cols-md-4">
+        <div class="card h-100">
+          <%= link_to listing_path(@listing.id) do %>
+            <%= image_tag(@listing.picture, class: "card-img-top") if @listing.picture.attached? %>
+          <% end %>
+        <div class="card-body">
+            <h5 class="card-title"><%= @listing.brand %> <%= @listing.style %></h5>
+            <p class="card-text">Size: <%= @listing.size %> (US mens)</p>
+            <p class="card-text">Price: A$<%= @listing.price %></p>
+            <p class="card-text">Description: <%= @listing.description %></p>
+            <p class="card-text"><small class="text-muted">Listed by <%= @listing.user.username %> on <%= @listing.created_at.strftime("%d/%m/%Y") %></small>
+              <% if user_signed_in? && @listing.user.id != current_user.id %>
+                <%= link_to "Message #{@listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "post" %>
+              <% end %>
+            </p>
+        </div>
     </div>
-    <div class="display-card">
-        <h3>Style: <%= @listing.style %></h3>
-    </div>
-    <div class="display-card">
-        <h3>Size: <%= @listing.size %> (US mens)</h3>
-    </div>
-    <div class="display-card">
-        <h3>Price: A$<%= @listing.price %></h3>
-    </div>
-    <div class="display-card">
-        <h3>Description: <%= @listing.description %></h3>
-    </div>
-    <div class="display-card">
-        <%= image_tag(@listing.picture, class: "shoe-pic") if @listing.picture.attached? %>
-    </div>
-    <h4>Listed by <%= @listing.user.username %> on <%= @listing.created_at.strftime("%d/%m/%Y") %></h4>
 </div>
     <div>
       <% if @payment_button %>
@@ -41,7 +38,4 @@
             });
         </script>
       </div>
-      <% if @listing.user.id != current_user.id %>
-        <%= link_to "Message #{@listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "post" %>
-      <% end %>
 <%= link_to 'Back', 'javascript:history.back()' %>
