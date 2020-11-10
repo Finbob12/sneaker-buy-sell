@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "/account", to: "listings#account", as: "account"
   get "/payments/success", to: "payments#success"
   post "/payments/webhook", to: "payments#webhook"
+  get "*unmatched_route", :to => "application#render_404"
 end
