@@ -37,8 +37,11 @@ class ListingsController < ApplicationController
     end
     
     def create
-        current_user.listings.create(listing_params)
-        redirect_to listings_path, notice: "Listing was successfully created"
+        if current_user.listings.create(listing_params)
+           redirect_to root_path, notice: "Listing was successfully created"
+        else
+            render "new"
+        end
     end
 
     def edit
@@ -56,7 +59,7 @@ class ListingsController < ApplicationController
         if @listing.present?
           @listing.destroy
         end
-        redirect_to root_url, notice: "Listing was successfully deleted"
+        redirect_to account_path, notice: "Listing was successfully deleted"
     end
 
     def manage_listings
