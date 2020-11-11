@@ -31,6 +31,49 @@
     font-family: 'Staatliches', cursive;
 }
 
+@mixin slider {
+    position: relative;
+    background: none;
+    color: #fff;
+    text-decoration: none;
+    border: 0.2em solid #fff;
+    padding: 0.5em 1em;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10%;
+      background: #222;
+      height: 0.3em;
+      right: 20%;
+      top: -0.21em;
+      transform: skewX(-45deg);
+      -webkit-transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+      transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10%;
+      background: #222;
+      height: 0.3em;
+      left: 20%;
+      bottom: -0.25em;
+      transform: skewX(45deg);
+      -webkit-transition: all 0.45 cubic-bezier(0.86, 0, 0.07, 1);
+      transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+    &:hover {
+      &::before {
+        right: 80%;
+      }
+      &::after {
+        left: 80%;
+      }
+    }
+  }
+
 .main-heading {
     @include staatliches;
     position: relative;
@@ -46,25 +89,108 @@
     @include staatliches;
 }
 
-.navbar-dark .navbar-nav .nav-item .nav-link {
-    color: #fff;
-    text-decoration: none;
+.nav-link {
+    @include slider;
+    @include staatliches;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    color: #fff !important;
 }
+
+// I hate that important is here but bootstrap wasn't letting me override
+.btn-style {
+    text-decoration: none !important;
+    @include staatliches;
+}
+
+.msg-btn {
+    text-decoration: none !important;
+    @include lato
+}
+
+.ctrl-standard.fx-sliderIn {
+  color: black;
+  border-color: #81aaa4;
+}
+.ctrl-standard.fx-sliderIn::after {
+  background: #81aaa4;
+}
+
+[class*="ctrl-"] {
+  padding: 5ox 10px;
+  border-radius: 2px;
+  border: 1px solid #231f20;
+}
+[class*="ctrl-"][class*="fx-"]:hover,
+[class*="ctrl-"][class*="fx-"].active {
+  color: #231f20;
+}
+  [class*="fx-"],
+[class*="fx-"]:hover {
+    -webkit-transition: color 0.5s  ease-in-out;
+    transition: color 0.5s  ease-in-out;
+  }
+  [class*="fx-"]:not(.fx-dyna) {
+    position: relative;
+    z-index: 1;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+    overflow: hidden;
+  }
+  [class*="fx-"]:not(.fx-dyna)::after,
+[class*="fx-"]:not(.fx-dyna)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  .fx-sliderIn::after {
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+  }
+  .fx-sliderIn:hover::after,
+.fx-sliderIn.active::after {
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    width: 100%;
+  }
+  :checked + .fx-sliderIn::after,
+.fx-sliderIn.active::after {
+    width: 300%;
+  }
+
 
 h3 {
     @include lato;
 }
 
-p {
+.card-title {
     @include lato;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.card-text {
+    @include lato;
+    font-size: 20px;
 }
 
 .navbar {
     @include lato;
+    background: #222;
 }
 
 .greeting {
     @include lato;
+    font-size: 20px;
+    position: absolute;
+    top: 80px;
+    right: 50px;
 }
 
 .carousel-shoe-pic {
@@ -105,10 +231,6 @@ p {
 }
 
 // Account page styling
-.btn-style {
-    color: #fff;
-    text-decoration: none;
-}
 
 @media (min-width: 768px) {
     .navbar-brand.abs

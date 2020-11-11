@@ -1,6 +1,6 @@
 <h1 class="sub-heading d-flex justify-content-center">My Account</h1>
-<div class="btn btn-outline-secondary bg-dark btn-sm" role="button" aria-pressed="true">
-  <%= link_to "Edit Account Details", edit_user_registration_path, class: "btn-style" %>
+<div class="btn mb-2" role="button" aria-pressed="true">
+  <%= link_to "Edit Account Details", edit_user_registration_path, class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
 </div>
 <div class="row row-cols-1 row-cols-md-4">
     <% current_user.listings.each do |listing| %>
@@ -13,11 +13,11 @@
             <p class="card-text">Size: <%= listing.size %> (US mens)</p>
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
-            <div class="btn btn-outline-secondary btn-sm" role="button" aria-pressed="true">
-              <%= link_to "Delete", listing_path(listing.id), method: :delete %>
+            <div class="btn" role="button" aria-pressed="true">
+              <%= link_to "Delete", listing_path(listing.id), class: "ctrl-standard fx-sliderIn btn-style btn-lg", method: :delete %>
             </div>
-            <div class="btn btn-outline-secondary btn-sm" role="button" aria-pressed="true">
-              <%= link_to "Edit", edit_listing_path(listing.id) %>
+            <div class="btn" role="button" aria-pressed="true">
+              <%= link_to "Edit", edit_listing_path(listing.id), class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
             </div>
             <p class="card-text"><small class="text-muted">You created this listing on <%= listing.created_at.strftime("%d/%m/%Y") %></small></p>
           </div>

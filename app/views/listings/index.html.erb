@@ -33,20 +33,19 @@
 
 <div class="row row-cols-1 row-cols-md-4">
     <% @listings.each do |listing| %>
-        <div class="card h-100">
+        <div class="card align-items-stretch">
           <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
           <% end %>
         <div class="card-body">
-            <h5 class="card-title"><%= listing.brand %> <%= listing.style %></h5>
-            <p class="card-text">Size: <%= listing.size %> (US mens)</p>
+            <h5 class="card-title mt-auto"><%= listing.brand %> <%= listing.style %></h5>
+            <p class="card-text ">Size: <%= listing.size %> (US mens)</p>
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
-            <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%d/%m/%Y") %></small>
-              <%if user_signed_in? && listing.user.id != current_user.id %>
-                <%= link_to "Message #{listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: listing.user.id), method: "post" %>
-              <% end %>
-            </p>
+            <p class="card-text"><small class="text-muted">Listed by <%= listing.user.username %> on <%= listing.created_at.strftime("%d/%m/%Y") %></small></p>
+            <%if user_signed_in? && listing.user.id != current_user.id %>
+              <%= link_to "Message #{listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: listing.user.id), method: "post", class: "ctrl-standard fx-sliderIn msg-btn btn-lg"%>
+            <% end %>
         </div>
     </div>
     <% end %>

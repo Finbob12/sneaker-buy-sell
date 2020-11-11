@@ -11,17 +11,22 @@
   </head>
 
   <body>
+  <div class="d-flex justify-content-between">
     <h1 class="main-heading">K I C K S W A P</h1>
+      <% if user_signed_in? %>
+        <div class="greeting">Logged in as <%= current_user.username %></div>
+      <% end %>
+  </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item nav-link">
-              <%= link_to "All Shoes", listings_path %>
+            <li class="nav-item">
+              <%= link_to "All Shoes", listings_path, class: "nav-link" %>
             </li>
-            <li class="nav-item nav-link">
-              <%= link_to "Sell Some Shoes", new_listing_path %>
+            <li class="nav-item">
+              <%= link_to "Sell Some Shoes", new_listing_path, class: "nav-link" %>
             </li>
         </ul>
     </div>
@@ -34,31 +39,28 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <% if user_signed_in? %>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item nav-link">
-              <%= link_to "My Account", account_path  %>
+            <li class="nav-item">
+              <%= link_to "My Account", account_path, class: "nav-link" %>
             </li>
-            <li class="nav-item nav-link">
+            <li class="nav-item">
               <%= get_message_alerts(current_user) %>
             </li>
-            <li class="nav-item nav-link">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete %>
             </li>
       <% else %>
       <ul class="navbar-nav ml-auto">
-            <li class="nav-item nav-link">
-              <%= link_to "Login", new_user_session_path %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
-            <li class="nav-item nav-link">
-              <%= link_to "Sign up", new_user_registration_path %>
+            <li class="nav-item">
+              <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
             </li>
       <% end %>
         </ul>
         </ul>
     </div>
 </nav>
-      <% if user_signed_in? %>
-        <span class="greeting">Hello <%= current_user.username %></span>
-      <% end %>
     <%= yield %>
   </body>
 </html>

@@ -5,9 +5,9 @@ module ApplicationHelper
         unread_messages = Message.where("user_id != ? AND read = ?", current_user.id, false).where(conversation_id: [conversations]).count
     #  needs method below to alert user to unread messages
         if unread_messages == 0
-            return link_to "Messages", conversations_path
+            return link_to "Messages", conversations_path, class: "nav-link"
         else
-           return link_to "Messages", conversations_path
+           return link_to "Messages", conversations_path, class: "nav-link"
         end
 
       end
