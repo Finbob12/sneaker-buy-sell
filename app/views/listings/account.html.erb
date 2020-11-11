@@ -1,10 +1,10 @@
-<h1 class="sub-heading d-flex justify-content-center">My Account</h1>
+<h1 class="sub-heading d-flex justify-content-center mt-5">My Account</h1>
 <div class="btn mb-2" role="button" aria-pressed="true">
   <%= link_to "Edit Account Details", edit_user_registration_path, class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
 </div>
 <div class="row row-cols-1 row-cols-md-4">
     <% current_user.listings.each do |listing| %>
-        <div class="card h-100">
+        <div class="card align-items-stretch">
           <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
           <% end %>
