@@ -37,20 +37,25 @@ class ListingsController < ApplicationController
     end
     
     def create
-        if current_user.listings.create(listing_params)
-           redirect_to root_path, notice: "Listing was successfully created"
+        @listing = current_user.listings.create(listing_params)
+        if @listing.valid?
+            @listing.save
+            redirect_to listing_path(@listing.id)
         else
-            render "new"
+            flash.now[:messages] = @listing.errors.full_messages
+            render :new
         end
-    end
+end
 
     def edit
     end
 
     def update
-        if @listing.update(listing_params)
+        if @listing.update(listing_params) && @listing.valid?
+            @listing.save
             redirect_to @listing
         else
+            flash.now[:messages] = @listing.errors.full_messages
             render "edit"
         end
     end
