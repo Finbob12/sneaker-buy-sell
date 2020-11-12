@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
     end
 
     def show
-            @payment_button = true if user_signed_in?
+            @payment_button = true if user_signed_in? && current_user.id != @listing.user.id
         session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
             customer_email: current_user.email,
@@ -39,7 +39,7 @@ class ListingsController < ApplicationController
     def create
         @listing = current_user.listings.create(listing_params)
         if @listing.valid?
-            @listing.save
+            @listing.save!
             redirect_to listing_path(@listing.id)
         else
             flash.now[:messages] = @listing.errors.full_messages
@@ -52,7 +52,7 @@ end
 
     def update
         if @listing.update(listing_params) && @listing.valid?
-            @listing.save
+            @listing.save!
             redirect_to @listing
         else
             flash.now[:messages] = @listing.errors.full_messages
@@ -62,7 +62,7 @@ end
 
     def destroy
         if @listing.present?
-          @listing.destroy
+          @listing.destroy!
         end
         redirect_to account_path, notice: "Listing was successfully deleted"
     end

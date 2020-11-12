@@ -33,6 +33,7 @@
 
 <div class="row row-cols-1 row-cols-md-4">
     <% @listings.each do |listing| %>
+      <% if !listing.sold %>
         <div class="card align-items-stretch">
           <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
@@ -47,6 +48,7 @@
               <%= link_to "Message #{listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: listing.user.id), method: "post", class: "ctrl-standard fx-sliderIn msg-btn btn-lg"%>
             <% end %>
         </div>
-    </div>
+        </div>
+      <% end %>
     <% end %>
 </div>
