@@ -7,7 +7,7 @@ module ApplicationHelper
         if unread_messages == 0
             return link_to "Messages", conversations_path, class: "nav-link"
         else
-           return link_to "Messages", conversations_path, class: "nav-link"
+           return link_to "Messages", conversations_path, class: "nav-link bg-danger"
         end
 
       end

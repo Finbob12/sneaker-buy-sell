@@ -4,21 +4,14 @@ class MessagesController < ApplicationController
     end
 
     def index
-        @messages = @conversation.messages
-        if @messages.length > 10
-        @over_ten = true
-        @messages = @messages[-10..-1]
-    end
-    if params[:m]
-        @over_ten = false   
-        @messages = @conversation.messages
+    @messages = @conversation.messages
+    @messages.where("user_id != ? AND read = ?", current_user.id, false).update_all(read: true)
+      if current_user != @conversation.sender 
+        if current_user != @conversation.recipient
+        redirect_to conversations_path
         end
-    if @messages.last
-        if @messages.last.user_id != current_user.id
-        @messages.last.read = true;
-        end
-    end
-    @message = @conversation.messages.new
+      end
+      @message = @conversation.messages.new
     end
 
     def new
