@@ -1,10 +1,17 @@
 class ConversationsController < ApplicationController
     before_action :authenticate_user!
 
+    #initialize all users and conversations
+    
     def index
       @users = User.all
       @conversations = Conversation.all
     end
+
+    #called when message created by checking sender and recipient ids,
+    # to check if a conversation between two users already exists. If one does not exist
+    # new messages will be created associated with that conversation row. Otherwise
+    # a new conversation row will be created for messages to be associated with.
 
     def create
         if Conversation.between(params[:sender_id],params[:recipient_id])

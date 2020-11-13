@@ -3,10 +3,15 @@ class ListingsController < ApplicationController
     before_action :listing_params, only: [:create]
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+
+    #initialize all rows of the listings table
     def index
         @listings = Listing.all
     end
 
+    #query listing table to check sold column, so only unsold items can be viewed
+    #query user.id to ensure that payment button will only be displayed if
+    #user viewing != user selling
     def show
         if @listing.sold then redirect_to listings_path
           elsif current_user.id != @listing.user.id
@@ -35,10 +40,16 @@ class ListingsController < ApplicationController
         end
     end
 
-    def new 
+    def new
         @listing = Listing.new
     end
     
+    #instantiate a new listing row with all params (all required)
+    #validation ensures the listing is valid before saving the row
+    #then redirects to the listings new page
+    #if any fields do not meet validation then error flash will show
+    #with the new page being re-rendered
+
     def create
         @listing = current_user.listings.create(listing_params)
         if @listing.valid?
@@ -53,6 +64,9 @@ end
     def edit
     end
 
+    #if update has all params and these pass validation then
+    #the listing row will be updated, saved and redirected to the items
+    #show page. Otherwise the errors will flash on the re-rendered edit page.
     def update
         if @listing.update(listing_params) && @listing.valid?
             @listing.save!
@@ -63,23 +77,26 @@ end
         end
     end
 
+    #if listing row exists, then listing row is dropped from table
+    #then redirect to account page (only page you can delete from).
     def destroy
         if @listing.present?
           @listing.destroy!
         end
         redirect_to account_path, notice: "Listing was successfully deleted"
     end
-
-    def manage_listings
-        @listings = Listing.all
-    end
     
 private
+
+    #permissions for listing table so only specified input fields can be passed
+    #to the database.
 
     def listing_params
         params.require(:listing).permit(:brand, :style, :size, :price, :description, :picture)
     end
 
+    #finds the listing id. Used as a helper for controller methods.
+    
     def set_listing
         @listing = Listing.find(params[:id])
     end

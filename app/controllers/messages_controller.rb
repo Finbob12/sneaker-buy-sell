@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
      @conversation = Conversation.find(params[:conversation_id])
     end
 
+    # find all messages in relevant conversation table being accessed then
+    # updates these to read if they are unread. Logic to differenciate sender
+    # and recipient so every user can't see every other users conversations.
+
     def index
     @messages = @conversation.messages
     @messages.where("user_id != ? AND read = ?", current_user.id, false).update_all(read: true)
@@ -18,6 +22,8 @@ class MessagesController < ApplicationController
         @message = @conversation.messages.new
     end
 
+    # Create a new message associated to the current conversation
+    # and adds it to the table
     def create
         @message = @conversation.messages.new(message_params)
         if @message.save
