@@ -57,7 +57,7 @@ gem 'devise'
 
 gem 'faker'
 
-gem 'stripe'
+gem 'stripe', '~> 5.28'
 
 gem "ultrahook", "~> 0.1.5"
 
