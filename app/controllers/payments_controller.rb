@@ -4,16 +4,16 @@ class PaymentsController < ApplicationController
     def success
     end
 
+    # Webhook endpoint is set for production so the state changes will not work 
+    # if testing locally unless you run `stripe listen --forward-to localhost:3000/payments/webhook`
+    # at the same time as the server is running
+
   def webhook
     payment_id = params[:data][:object][:payment_intent]
     payment = Stripe::PaymentIntent.retrieve(payment_id)
     listing_id = payment.metadata.listing_id
     user_id = payment.metadata.user_id
     listing = Listing.find(listing_id)
-    puts "***********************"
-    puts "Payment succeeded"
-    puts listing_id
-    puts listing
     listing.sold = true
     listing.save
     head 200
