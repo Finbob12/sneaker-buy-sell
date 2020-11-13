@@ -8,12 +8,14 @@ class ListingsController < ApplicationController
     end
 
     def show
-            @payment_button = true if user_signed_in? && current_user.id != @listing.user.id
+        if @listing.sold then redirect_to listings_path
+          elsif current_user.id != @listing.user.id
+            @payment_button = true
         session = Stripe::Checkout::Session.create(
             payment_method_types: ['card'],
             customer_email: current_user.email,
             line_items: [{
-                name: @listing.style,
+                name: (@listing.brand + " " + @listing.style),
                 description: @listing.description,
                 amount: @listing.price * 100,
                 currency: 'aud',
@@ -30,6 +32,7 @@ class ListingsController < ApplicationController
         )
     
         @session_id = session.id
+        end
     end
 
     def new 
