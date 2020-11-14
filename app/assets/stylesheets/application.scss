@@ -239,6 +239,12 @@ h3 {
   @include lato;
 }
 
+.picture-label {
+  @include staatliches;
+  color: #a1a2a3;
+  font-size: 22px;
+}
+
 .form-control:focus {
   box-shadow: none;
 }
@@ -250,8 +256,6 @@ h3 {
 }
 
 .form-group > label {
-  font-size: 16px;
-  letter-spacing: 0.5px;
   color: #a1a2a3;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
@@ -296,6 +300,10 @@ h3 {
 .form-control:focus,
 .form-control:focus:hover {
   border-bottom: 1px solid black;
+}
+
+.user-extra-btn {
+  margin-right: 100px;
 }
 
 @media only screen and (max-width: 768px) {

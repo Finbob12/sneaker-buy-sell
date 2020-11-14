@@ -22,7 +22,7 @@
           <%= f.number_field :size, min: 1, max: 25, required: true, class: "form-control" %> (US mens)
         </div>
         <div>
-          <%= f.label :picture %>
+          <%= f.label :picture, class: "picture-label"%>
           <br>
           <%= f.file_field :picture, required: true, accept: 'image/png, image/jpg, image/jpeg' %>
         </div>
