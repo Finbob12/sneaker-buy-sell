@@ -1,7 +1,7 @@
 
 <!-- Carousel elements start here -->
 
-<div id="carousel" class="carousel slide" data-ride="carousel">
+<div id="carousel" class="carousel slide img-responsive" data-ride="carousel">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" id="carousel_images">
@@ -9,7 +9,7 @@
       <div class="carousel-item<%= " active" if listing == @listings.first %>">
           <%= link_to  listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
-          <% end %>        
+          <% end %>
         <div class="carousel-caption text-dark">
           <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
         </div>
@@ -31,7 +31,7 @@
 
 <!-- Listings display -->
 
-<div class="row row-cols-1 row-cols-md-4">
+<div class="row row-cols-md-4">
     <% @listings.each do |listing| %>
       <% if !listing.sold %>
         <div class="card align-items-stretch">
