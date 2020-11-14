@@ -8,6 +8,7 @@ import './src/application.scss'
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("custom/form")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

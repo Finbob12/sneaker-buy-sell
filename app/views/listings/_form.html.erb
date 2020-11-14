@@ -1,28 +1,39 @@
-<%= form_with(model: @listing, local:true ) do |f| %>
-  <%= f.label :brand %>
-  <%= f.text_field :brand, required: true %>
-  <br>
-  <br>
-  <%= f.label :style %>
-  <%= f.text_field :style, required: true %>
-  <br>
-  <br>
-  <%= f.label :price %>
-  <%= f.number_field :price, min: 0, max: 50000, required: true %> ($AUD)
-  <br>
-  <br>
-  <%= f.label :size %>
-  <%= f.number_field :size, min: 1, max: 25, required: true %> (US mens)
-  <br>
-  <br>
-  <%= f.label :picture %>
-  <%= f.file_field :picture, required: true, accept: 'image/png, image/jpg, image/jpeg' %>
-  <br>
-  <br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description, required: true %>
-    <small class="form-text text-muted">Describe your shoes in as much detail as you can. Age, condition etc..</small>
-  <br>
-  <br>
-  <%= f.submit "Sell these shoes!" %>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-5 d-flex align-items-center">
+      <h1 class="form-heading">Tell us about your shoes!</h1>
+    </div>
+    <div class="col-md-6 offset-md-1">
+      <%= form_with(model: @listing, local:true, class: "mt-4 mt-md-0" ) do |f| %>
+        <div class="form-group">
+          <%= f.label :brand %>
+          <%= f.text_field :brand, required: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :style %>
+          <%= f.text_field :style, required: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price %>
+          <%= f.number_field :price, min: 0, max: 50000, required: true, class: "form-control" %> ($AUD)
+        </div>
+        <div class="form-group">
+          <%= f.label :size %>
+          <%= f.number_field :size, min: 1, max: 25, required: true, class: "form-control" %> (US mens)
+        </div>
+        <div>
+          <%= f.label :picture %>
+          <br>
+          <%= f.file_field :picture, required: true, accept: 'image/png, image/jpg, image/jpeg' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %><br>
+          <%= f.text_area :description, required: true, class: "form-control" %>
+        </div>
+          <small class="form-text text-muted">Describe your shoes in as much detail as you can. Age, condition etc..</small>
+          <br>
+        <%= f.submit "Sell these shoes!", class: "ctrl-standard fx-sliderIn btn-style btn-lg mb-5" %>
+    </div>
+  </div>
 <% end %>
+</div>
