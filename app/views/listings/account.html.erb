@@ -2,7 +2,7 @@
 <div class="btn mb-2" role="button" aria-pressed="true">
   <%= link_to "Edit Account Details", edit_user_registration_path, class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
 </div>
-<div class="row row-cols-1 row-cols-md-4">
+<div class="row row-cols-md-4">
     <% current_user.listings.each do |listing| %>
         <div class="card align-items-stretch">
           <%= link_to listing_path(listing.id) do %>

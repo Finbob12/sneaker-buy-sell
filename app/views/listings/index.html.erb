@@ -39,7 +39,7 @@
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
           <% end %>
         <div class="card-body">
-            <h5 class="card-title mt-auto"><%= listing.brand %> <%= listing.style %></h5>
+            <h5 class="card-title"><%= listing.brand %> <%= listing.style %></h5>
             <p class="card-text ">Size: <%= listing.size %> (US mens)</p>
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
