@@ -90,6 +90,11 @@
     @include staatliches;
 }
 
+.success-heading {
+  @include staatliches;
+  font-size: 100px;
+}
+
 .mx-auto {
     @include staatliches;
 }
@@ -320,6 +325,10 @@ h3 {
 
 .form-margin-edit-acc {
   margin-top: 6%;
+}
+
+.success-margin {
+  margin-top: 10%;
 }
 
 @media only screen and (max-width: 768px) {
