@@ -1,29 +1,33 @@
 # README
 
-## Notes
+## R7 - Identification of the problem you are trying to solve by building this particular marketplace app
 
-time ago in words for created at timestamps
-twilio for chat
-foreign keys sit on belongs_to tables. they are whatever it belongs to '_id' eg. restaurant_id
-active record migrations docs/references for syntax to add foreign key
-create models then do foreign keys, match ERD
-Do seeds after models and associations, puts in seed file, start finish
-  build out what needs to be rendered in views
-  add necessary controller methods as needed  
-  remember to link_to inbetween views using paths, index to show, back button from show
-  strong params to whitelist form params on creation
-  follow devise docs for user model etc. watch out for min password field
-current_user is built in devise
-devise routes as paths eg. destory_user_session_path to log out
-after associations create needs to be current_user.model.create(model_params ) so user owns the model
+A two way marketplace for sneakers does not currently exist in Australia that is widely used. There are a few international marketplaces like 'Goat' and 'StockX' that are widely used. These function heavily as a third party that takes a large cut of sales and manages the buying and selling themselves. The closest model that fits the scope of 'KICKSWAP' is 'Depop', which is not focused on shoes and again is an international company. 'KICKSWAP' aims to be the premier marketplace for buying and selling sneakers in a solely Australian focused market. 'KICKSWAP' will operate in a model similar to 'Gumtree', wherein users can be buyers or sellers. These buyers and sellers are then responsible for the management of their sales and purchases with 'KICKSWAP' merely being a platform. The removal of a sales cut also means sellers can save more and pass those savings on to the buyers.
 
-lib/tasks/stripe.rake to do stripe test
-put the JS in application view
-stripe needs a controller and skip before_action
-initializers/stripe.rb needs Stripe.api_key =
-embed ruby for JS portion of key dig
+## R8 - Why is it a problem that needs solving?
 
-DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3
+## R9 - A link (URL) to your deployed app
+
+[kickswap.herokuapp.com](https://kickswap.herokuapp.com)
+
+## R10 - A link to your GitHub repository
+
+[github.com/Finbob12/sneaker-buy-sell](https://github.com/Finbob12/sneaker-buy-sell)
+
+## R11 - Description of your marketplace app
+
+### Purpose
+
+### Functionality/Features
+
+### Sitemap
+
+### Screenshots
+
+### Target Audience
+
+### Tech Stack
+
 
 ## R12 - User stories
 
@@ -101,8 +105,108 @@ Authentication & Authorisation:
 
 ![wireframe-payment-success](readme-images/wire-success.png)
 
+## R14 - ERD
+
+![kickswap-erd](readme-images/kickswap-erd.png)
+
+## R15 - Explain the different high-level components (abstractions) in your app
+
+## R16 - Detail any third party services that your app will use
+
+DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3
+
+## R17 - Describe your projects models in terms of the relationships (active record associations) they have with each other
+
+## R18 - Discuss the database relations to be implemented in your application
+
+## R19 - Provide your database schema design
+
+```ActiveRecord::Schema.define(version: 2020_11_12_061018) do
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "brand", null: false
+    t.string "style", null: false
+    t.integer "size", null: false
+    t.text "description", null: false
+    t.boolean "sold", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.integer "price", null: false
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "listings", "users"
+end
+```
+
 ## R20 - Trello
 
-Initial Trello board on November 5th. Readme tasks are well defined but app tasks need to be further fleshed out as I approach aspects of the build.
+Initial Trello board on November 5th. Due dates were not used for this project due to the lack of chronological necessity in the build. Readme tasks are well defined but app tasks need to be further fleshed out as I approach aspects of the build. Styling tasks to be added as I see necessary.
 
 ![trello-november-5th](readme-images/trello-nov5.png)
+
+Basic functionality of the app completed at this point. Starting to find more tasks that need doing and adding to the board.
+
+![trello-november-9th](readme-images/trello-nov9.png)
+
+More tasks have been added as previous tasks were completed. Constantly finding more small tasks that need taking care of at some point. Bugs list added at this point.
+
+![trello-november-12th](readme-images/trello-nov12.png)
+
+Backlog and bugs have filled up more but the project MVP is almost complete. Huge amount of styling also done at this point, but still a lot to go.
+
+![trello-november-16th](readme-images/trello-nov16.png)
