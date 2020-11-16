@@ -111,6 +111,11 @@
     color: #fff !important;
 }
 
+.nav-link {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
 // I hate that important is here but bootstrap wasn't letting me override
 .btn-style {
     text-decoration: none !important;

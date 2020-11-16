@@ -5,7 +5,8 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" id="carousel_images">
-    <% @listings.each_with_index do |listing| %>
+    <% @listings.each do |listing| %>
+      <% if !listing.sold %>
       <div class="carousel-item<%= " active" if listing == @listings.first %>">
           <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
@@ -14,6 +15,7 @@
           <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 
