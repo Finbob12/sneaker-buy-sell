@@ -5,6 +5,9 @@
 <div class="row row-cols-md-4">
     <% current_user.listings.each do |listing| %>
         <div class="card align-items-stretch">
+          <% if listing.sold %>
+            <h1 class="sold-text">SOLD!</h1>
+          <% end %>
           <%= link_to listing_path(listing.id) do %>
             <%= image_tag(listing.picture, class: "card-img-top") if listing.picture.attached? %>
           <% end %>
