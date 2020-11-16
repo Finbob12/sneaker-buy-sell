@@ -3,10 +3,9 @@ class ListingsController < ApplicationController
     before_action :listing_params, only: [:create]
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-
-    #initialize all rows of the listings table
+    #initialize all rows of the listings table with eager load to reduce (N+1 queries)
     def index
-        @listings = Listing.all
+        @listings = Listing.includes(picture_attachment: :blob)
     end
 
     #query listing table to check sold column, so only unsold items can be viewed
