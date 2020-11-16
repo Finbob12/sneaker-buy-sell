@@ -5,7 +5,8 @@ class ListingsController < ApplicationController
 
     #initialize all rows of the listings table with eager load to reduce (N+1 queries)
     def index
-        @listings = Listing.includes(picture_attachment: :blob)
+        @q = Listing.ransack(params[:q])
+        @listings = @q.result.includes(picture_attachment: :blob)
     end
 
     #query listing table to check sold column, so only unsold items can be viewed
