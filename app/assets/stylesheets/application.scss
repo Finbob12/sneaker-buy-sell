@@ -15,13 +15,8 @@
  */
 
 @import "bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-
-@mixin roboto {
-    font-family: 'Roboto', sans-serif;
-}
 
 @mixin lato {
     font-family: 'Lato', sans-serif;
@@ -362,10 +357,4 @@ h3 {
   .carousel-caption {
     font-size: 16px;
   }
-
-  // .row-cols-md-4 {
-  //   width:100%;
-  //   float:left;
-  //   margin:0;
-  // }
 }
