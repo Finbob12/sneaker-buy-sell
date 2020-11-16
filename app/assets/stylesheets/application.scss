@@ -109,15 +109,26 @@
     font-size: 18px;
     letter-spacing: 0.5px;
     color: #fff !important;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.search-nav-link {
+  @include staatliches;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .form-control {
   color: #fff !important;
 }
 
-.nav-link {
-  margin-top: 1%;
-  margin-bottom: 1%;
+// I hate that important is here but bootstrap wasn't letting me override
+.search-nav {
+  background: #fff !important;
+  display: block !important;
 }
 
 // I hate that important is here but bootstrap wasn't letting me override
