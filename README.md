@@ -117,7 +117,7 @@ Authentication & Authorisation:
 
 ## R16 - Detail any third party services that your app will use
 
-DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3
+DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3 - RANSACK
 
 ## R17 - Describe your projects models in terms of the relationships (active record associations) they have with each other
 

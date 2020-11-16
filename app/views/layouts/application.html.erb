@@ -27,7 +27,13 @@
             <li class="nav-item">
               <%= link_to "Sell Some Shoes", new_listing_path, class: "nav-link" %>
             </li>
-        </ul>
+        <form class="form-inline">
+          <%= search_form_for @q do |f| %>
+            <%= f.text_field :brand_cont, class: 'form-control mr-sm-2 ml-sm-2' %>
+            <%= f.submit class: 'nav-link' %>
+            <%= link_to "Clear", request.path, class: "nav-link" %>
+          <% end %>
+        </form>
     </div>
     <div class="mx-auto order-2">
         <a class="navbar-brand mx-auto" href="<%= listings_path %>">K I C K S W A P</a>
@@ -60,6 +66,21 @@
         </ul>
     </div>
 </nav>
+
+<table>
+  <tr>
+    <th> <%= sort_link @q, :brand, "Brand"%></th>
+    <th> <%= sort_link @q, :size,  "Size"%></th>
+    <th> <%= sort_link @q, :price,  "Price"%></th>
+  </tr>
+  <% @listings.each do |listing| %>
+  <tr>
+    <td><%= link_to listing.brand, listing_path(listing) %></td>
+    <td><%= listing.size %></td>
+    <td><%= listing.price %></td>
+  </tr>
+  <% end %>
+</table>
     <%= yield %>
   </body>
 </html>
