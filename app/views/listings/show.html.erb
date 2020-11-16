@@ -1,5 +1,47 @@
-<div class="row row-cols-1 row-cols-md-4">
-        <div class="card h-100">
+<div class="container-fluid show-margin">
+  <div class="row">
+    <div class="col-xl">
+      <%= link_to listing_path(@listing.id) do %>
+        <%= image_tag(@listing.picture, class: "img-show") if @listing.picture.attached? %>
+      <% end %>
+    </div>
+    <div class="col-md-6 offset-md-1">
+      <h5 class="show-title"><%= @listing.brand %> <%= @listing.style %></h5>
+      <p class="show-text">Size: <%= @listing.size %> (US mens)</p>
+      <p class="show-text">Price: A$<%= @listing.price %></p>
+      <p class="show-text">Description: <%= @listing.description %></p>
+      <p class="show-text  "><small class="text-muted">Listed by <%= @listing.user.username %> on <%= @listing.created_at.strftime("%d/%m/%Y") %></small></p>
+        <%if user_signed_in? && @listing.user.id != current_user.id %>
+          <%= link_to "Message #{@listing.user.username}", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "post", class: "ctrl-standard fx-sliderIn msg-btn btn-lg"%>
+        <% end %>
+      <% if @payment_button %>
+          <div class="btn" role="button" aria-pressed="true" data-stripe="payment">
+            <h4 class="ctrl-standard fx-sliderIn msg-btn btn-lg">Buy now</h4>
+          </div>
+        <% end %>
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+          document
+            .querySelector("[data-stripe='payment']")
+            .addEventListener("click", () => {
+              const stripe = Stripe(
+                "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+              );
+          
+              stripe.redirectToCheckout({
+                sessionId: "<%= @session_id %>"
+              });
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%
+=begin %>
+
+    
           <%= link_to listing_path(@listing.id) do %>
             <%= image_tag(@listing.picture, class: "card-img-top") if @listing.picture.attached? %>
           <% end %>
@@ -37,3 +79,7 @@
             });
         </script>
       </div>
+
+
+<%
+=end %>
