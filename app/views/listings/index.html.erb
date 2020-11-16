@@ -1,4 +1,25 @@
-
+ <nav class="search-nav navbar w-50 navbar-expand-md sticky-top">
+    <div class="">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <form class="form-inline">
+                <%= search_form_for @q do |f| %>
+                  <%= f.text_field :brand_cont, class: "form-control mr-sm-2 ml-sm-2" %>
+                  <%= f.submit class: "ctrl-standard fx-sliderIn btn-style btn-sm mr-1" %>
+                  <%= link_to "Clear", request.path, class: "ctrl-standard fx-sliderIn btn-style btn-sm mr-3" %>
+                <% end %>
+              </form>
+            </li>
+        <%= content_tag :table, class: "mt-1" do %>
+          <tr>
+            <%= content_tag :th, sort_link(@q, :brand), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
+            <%= content_tag :th, sort_link(@q, :size), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
+            <%= content_tag :th, sort_link(@q, :price), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
+          </tr>
+        <% end %>
+        </ul>
+    </div>
+</nav>
 <!-- Carousel elements start here -->
 
 <div id="carousel" class="carousel slide img-responsive" data-ride="carousel">
