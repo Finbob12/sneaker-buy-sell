@@ -3,7 +3,8 @@ class ListingsController < ApplicationController
     before_action :listing_params, only: [:create]
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-    #initialize all rows of the listings table with eager load to reduce (N+1 queries)
+    #initialize all rows of the listings table with eager load for s3 images, ransack for search and search and paginate
+    #for limiting listings per page
     def index
         @q = Listing.ransack(params[:q])
         @listings = @q.result.with_attached_picture.paginate(:page => params[:page], :per_page=>9)
