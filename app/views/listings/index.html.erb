@@ -1,15 +1,15 @@
 <div class="row">
  <nav class="search-nav navbar-expand-md navbar-transparent">
-    <div class="">
+    <div>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <form class="form-inline mt-2">
+              <div class="form-inline mt-2">
                 <%= search_form_for @q do |f| %>
                   <%= f.text_field :brand_cont, class: "form-control mr-sm-2 ml-sm-2" %>
                   <%= f.submit class: "ctrl-standard fx-sliderIn btn-style btn-lg mr-1" %>
                   <%= link_to "Clear", request.path, class: "ctrl-standard fx-sliderIn btn-style btn-lg mr-3" %>
                 <% end %>
-              </form>
+              </div>
         </ul>
         <ul class="navbar-nav mr-auto">
           <li>
