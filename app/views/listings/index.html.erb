@@ -1,57 +1,64 @@
- <nav class="search-nav navbar w-50 navbar-expand-md sticky-top">
+<div class="row">
+ <nav class="search-nav navbar-expand-md navbar-transparent">
     <div class="">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <form class="form-inline">
+              <form class="form-inline mt-2">
                 <%= search_form_for @q do |f| %>
                   <%= f.text_field :brand_cont, class: "form-control mr-sm-2 ml-sm-2" %>
-                  <%= f.submit class: "ctrl-standard fx-sliderIn btn-style btn-sm mr-1" %>
-                  <%= link_to "Clear", request.path, class: "ctrl-standard fx-sliderIn btn-style btn-sm mr-3" %>
+                  <%= f.submit class: "ctrl-standard fx-sliderIn btn-style btn-lg mr-1" %>
+                  <%= link_to "Clear", request.path, class: "ctrl-standard fx-sliderIn btn-style btn-lg mr-3" %>
                 <% end %>
               </form>
-            </li>
-        <%= content_tag :table, class: "mt-1" do %>
-          <tr>
-            <%= content_tag :th, sort_link(@q, :brand), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
-            <%= content_tag :th, sort_link(@q, :size), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
-            <%= content_tag :th, sort_link(@q, :price), class: "ctrl-standard fx-sliderIn btn-style btn-sm" %>
-          </tr>
-        <% end %>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+          <li>
+            <h4 class="sub-heading m-3 ml-5">Sort By</h4>
+          </li>
+          <li class="nav-item">
+            <%= content_tag :table, class: "mt-2" do %>
+              <tr>
+                <%= content_tag :th, sort_link(@q, :brand), class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
+                <%= content_tag :th, sort_link(@q, :size), class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
+                <%= content_tag :th, sort_link(@q, :price), class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
+              </tr>
+            <% end %>
+          </li>
         </ul>
     </div>
-</nav>
+  </nav>
 <!-- Carousel elements start here -->
 
-<div id="carousel" class="carousel slide img-responsive" data-ride="carousel">
+  <div id="carousel" class="carousel slide img-responsive ml-5 pl-5" data-ride="carousel">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" id="carousel_images">
-    <% @listings.each do |listing| %>
-      <% if !listing.sold %>
+<!-- Wrapper for slides -->
+    <div class="carousel-inner" id="carousel_images">
+      <% @listings.each do |listing| %>
+        <% if !listing.sold %>
       <div class="carousel-item<%= " active" if listing == @listings.first %>">
-          <%= link_to listing_path(listing.id) do %>
-            <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
-          <% end %>
+        <%= link_to listing_path(listing.id) do %>
+          <%= image_tag(listing.picture, class: "carousel-shoe-pic") if listing.picture.attached? %>
+        <% end %>
         <div class="carousel-caption text-dark">
           <%= listing.brand %> <%= listing.style %> A$<%= listing.price %>
         </div>
       </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
   <!-- Controls -->
-  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
 <!-- Carousel elements end here -->
-
+</div>
 <!-- Listings display -->
 
 <div class="row row-cols-md-4">
