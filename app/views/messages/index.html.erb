@@ -1,29 +1,29 @@
 
 <div class="container d-flex justify-content-center">
-<div class="messages-container overflow-auto">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <% if user == @them %>
-        <div class="d-flex justify-content-end">
-          <p class="text-right bg-secondary p-3 rounded">
-            <strong><%= user.username %></strong><br>
-            <%= message.body %><br>
-            <span class="font-italic"><%= time_ago_in_words(message.updated_at, {}) %> ago</span>
+  <div class="messages-container overflow-auto">
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <% if user == @them %>
+          <div class="d-flex justify-content-end">
+            <p class="text-right bg-secondary p-3 rounded">
+              <strong><%= user.username %></strong><br>
+              <%= message.body %><br>
+              <span class="font-italic"><%= time_ago_in_words(message.updated_at, {}) %> ago</span>
+              </p>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-start">
+            <p class="bg-info p-3 rounded">
+              <strong><%= user.username %></strong><br>
+              <%= message.body %><br>
+             <span class="font-italic"><%= time_ago_in_words(message.updated_at, {}) %> ago</span>
             </p>
-        </div>
-      <% else %>
-        <div class="d-flex justify-content-start">
-          <p class="bg-info p-3 rounded">
-            <strong><%= user.username %></strong><br>
-            <%= message.body %><br>
-            <span class="font-italic"><%= time_ago_in_words(message.updated_at, {}) %> ago</span>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+          <% end %>
+       </div>
+     <% end %>
+   <% end %>
+  </div>
 </div>
   <%= form_for [@conversation, @message], html: {class: "input-group"} do |f| %>
     <div class="container">

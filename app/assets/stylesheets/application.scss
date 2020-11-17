@@ -113,17 +113,8 @@
     margin-bottom: 1%;
 }
 
-.search-nav-link {
-  @include staatliches;
-  font-size: 18px;
-  letter-spacing: 0.5px;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-
-// I hate that important is here but bootstrap wasn't letting me override
 .search-nav {
-  background: #fff !important;
+  width: 25%;
 }
 
 // I hate that important is here but bootstrap wasn't letting me override
@@ -249,11 +240,19 @@ h3 {
     font-size: 30px;
 }
 
+.carousel-control-prev-icon {
+  margin-left: -100px;
+}
+
+.carousel-control-next-icon {
+  margin-right: -180px;
+}
+
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
     filter: invert(100%);
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 /*------------------------------
 	Form styling
