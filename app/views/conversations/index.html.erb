@@ -1,17 +1,21 @@
-<div class=”ui segment”>
- <h3>Mailbox</h3>
- <div class=”ui list”>
-  <div class=”item”>
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
-    <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
-    <% end %>
-    <%= link_to recipient.username,   conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
+<div class="container conversation-margin">
+  <div class="row">
+    <div class="col-md-5 d-flex align-items-center">
+      <h1 class="form-heading">Messages</h1>
+    </div>
+    <div class="offset-md-2 mt-5">
+      <% @conversations.each do |conversation| %>
+        <div class="row m-auto">
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+        <%= link_to recipient.username, conversation_messages_path(conversation), class: "ctrl-standard fx-sliderIn btn-style btn-lg"%>
+          <% end %>
+          <% end %>
+        </div>
   </div>
  </div>
 </div>

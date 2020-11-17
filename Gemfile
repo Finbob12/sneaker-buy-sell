@@ -64,3 +64,7 @@ gem "ultrahook", "~> 0.1.5"
 gem "aws-sdk-s3", "~> 1.83"
 
 gem 'ransack'
+
+gem 'will_paginate-bootstrap4'
+
+gem "will_paginate", "~> 3.3"

@@ -13,9 +13,14 @@ class PaymentsController < ApplicationController
     payment = Stripe::PaymentIntent.retrieve(payment_id)
     listing_id = payment.metadata.listing_id
     user_id = payment.metadata.user_id
+    seller_id = payment.metadata.seller_id
     listing = Listing.find(listing_id)
     listing.sold = true
     listing.save
     head 200
   end
 end
+
+#implement auto messaging to seller in webhook if possible
+# message.create(from user_id to seller_id)(body: "blah blah blah")
+# message.save
