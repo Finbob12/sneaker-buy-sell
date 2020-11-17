@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
     #initialize all rows of the listings table with eager load to reduce (N+1 queries)
     def index
         @q = Listing.ransack(params[:q])
-        @listings = @q.result.includes(picture_attachment: :blob).paginate(:page => params[:page], :per_page=>9)
+        @listings = @q.result.with_attached_picture.paginate(:page => params[:page], :per_page=>9)
     end
 
     #query listing table to check sold column, so only unsold items can be viewed
@@ -99,6 +99,6 @@ private
     #finds the listing id. Used as a helper for controller methods.
     
     def set_listing
-        @listing = Listing.includes(:user).find(params[:id])
+        @listing = Listing.find(params[:id])
     end
 end
