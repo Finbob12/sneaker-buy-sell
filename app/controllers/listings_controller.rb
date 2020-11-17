@@ -99,6 +99,6 @@ private
     #finds the listing id. Used as a helper for controller methods.
     
     def set_listing
-        @listing = Listing.find(params[:id])
+        @listing = Listing.includes(:user).find(params[:id])
     end
 end
