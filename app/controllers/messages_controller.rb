@@ -10,6 +10,11 @@ class MessagesController < ApplicationController
     def index
     @messages = @conversation.messages
     @messages.where("user_id != ? AND read = ?", current_user.id, false).update_all(read: true)
+    if @conversation.sender == current_user
+      @msg_not = @conversation.recipient
+    else
+      @msg_not = @conversation.sender
+    end
       if current_user != @conversation.sender 
         if current_user != @conversation.recipient
         redirect_to conversations_path

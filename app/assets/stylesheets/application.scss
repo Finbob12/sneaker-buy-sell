@@ -131,6 +131,7 @@
 .msg-bubble {
   background: black;
   color: #fff;
+  @include lato;
 }
 /*------------------------------
 	Account buttons
