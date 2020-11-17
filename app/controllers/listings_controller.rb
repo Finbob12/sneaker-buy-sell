@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
     #initialize all rows of the listings table with eager load to reduce (N+1 queries)
     def index
         @q = Listing.ransack(params[:q])
-        @listings = @q.result.includes(picture_attachment: :blob)
+        @listings = @q.result.includes(picture_attachment: :blob).paginate(:page => params[:page], :per_page=>9)
     end
 
     #query listing table to check sold column, so only unsold items can be viewed
@@ -28,6 +28,7 @@ class ListingsController < ApplicationController
             }],
             payment_intent_data: {
                 metadata: {
+                    seller_id: @listing.user_id,
                     user_id: current_user.id,
                     listing_id: @listing.id
                 }

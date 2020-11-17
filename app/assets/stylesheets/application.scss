@@ -121,14 +121,9 @@
   margin-bottom: 1%;
 }
 
-.form-control {
-  color: #fff !important;
-}
-
 // I hate that important is here but bootstrap wasn't letting me override
 .search-nav {
   background: #fff !important;
-  display: block !important;
 }
 
 // I hate that important is here but bootstrap wasn't letting me override
@@ -358,6 +353,10 @@ h3 {
 .show-margin {
   margin-top: 10%;
   margin-left: 8%;
+}
+
+.conversation-margin {
+  margin-top: 15%;
 }
 
 .img-show {
