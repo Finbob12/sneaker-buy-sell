@@ -17,7 +17,7 @@
             <p class="card-text">Price: A$<%= listing.price %></p>
             <p class="card-text">Description: <%= listing.description %></p>
             <div class="btn" role="button" aria-pressed="true">
-              <%= link_to "Delete", listing_path(listing.id), class: "ctrl-standard fx-sliderIn btn-style btn-lg", method: :delete %>
+              <%= link_to "Delete", listing_path(listing.id), class: "ctrl-standard fx-sliderIn btn-style btn-lg", method: :delete, data: {confirm: "Are you sure?"} %>
             </div>
             <div class="btn" role="button" aria-pressed="true">
               <%= link_to "Edit", edit_listing_path(listing.id), class: "ctrl-standard fx-sliderIn btn-style btn-lg" %>
