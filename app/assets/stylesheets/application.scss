@@ -129,8 +129,12 @@
 }
 
 .msg-bubble {
-  background: black;
+  background: #8EA4A0;
   color: #fff;
+  @include lato;
+}
+
+.msg-bubble-input {
   @include lato;
 }
 /*------------------------------

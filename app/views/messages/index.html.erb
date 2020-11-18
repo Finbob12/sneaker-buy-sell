@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h2 class="sub-heading d-flex justify-content-center mt-5">Messages between you and <%= @msg_not.username %></h2>
+  <h1 class="sub-heading d-flex justify-content-center mt-5">Messaging <%= @msg_not.username %></h1>
 </div>
 <div class="container">
   <div>
@@ -27,12 +27,12 @@
    <% end %>
   </div>
 </div>
-  <%= form_for [@conversation, @message], html: {class: "input-group"} do |f| %>
-    <div class="container">
-        <%= f.text_area :body, class: "" %>
+  <%= form_for [@conversation, @message], html: {class: "input-group d-flex justify-content-center"} do |f| %>
+    <div class="md-form">
+        <%= f.text_area :body, class: "msg-bubble-input rounded" %>
         <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
         <div>
-          <%= f.submit "submit", class: "btn btn-success" %>
+          <%= f.submit "submit", class: "btn btn-secondary" %>
         </div>
       <% end %>
     </div>
