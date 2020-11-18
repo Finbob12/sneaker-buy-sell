@@ -21,6 +21,6 @@ class PaymentsController < ApplicationController
   end
 end
 
-#implement auto messaging to seller in webhook if possible
+# implement auto messaging to seller in webhook if possible otherwise JS event listener for sold boolean change
 # message.create(from user_id to seller_id)(body: "blah blah blah")
 # message.save
