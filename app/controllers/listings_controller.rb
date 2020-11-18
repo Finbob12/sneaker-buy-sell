@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
     #for limiting listings per page
     def index
         @q = Listing.ransack(params[:q])
-        @listings = @q.result.with_attached_picture.paginate(:page => params[:page], :per_page=>9)
+        @listings = @q.result.with_attached_picture.paginate(:page => params[:page], :per_page=>8)
     end
 
     #query listing table to check sold column, so only unsold items can be viewed
