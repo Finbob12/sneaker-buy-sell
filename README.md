@@ -28,37 +28,37 @@ The purpose of Kickswap is to create an open platform for Australian sneaker ent
 
 **Sitemap:**
 
-![Kickswap-sitemap](readme-images/kickswap-sitemap.png)
+![Kickswap-sitemap](docs/kickswap-sitemap.png)
 
 ### Screenshots
 
 **Home**
-![homepage](readme-images/home.png)
-![homepage-continued](readme-images/home-cont.png)
+![homepage](docs/home.png)
+![homepage-continued](docs/home-cont.png)
 **New/Edit**
-![new/edit](readme-images/new.png)
+![new/edit](docs/new.png)
 **Show**
-![show](readme-images/show.png)
+![show](docs/show.png)
 **Sign Up**
-![signup](readme-images/signup.png)
+![signup](docs/signup.png)
 **Log In**
-![login](readme-images/login.png)
+![login](docs/login.png)
 **Password Reset**
-![password-reset](readme-images/password-reset.png)
+![password-reset](docs/password-reset.png)
 **Edit Account**
-![edit-account](readme-images/edit-account.png)
+![edit-account](docs/edit-account.png)
 **Conversations**
-![conversations](readme-images/conversations.png)
+![conversations](docs/conversations.png)
 **Messages**
-![messages](readme-images/messages.png)
+![messages](docs/messages.png)
 **Stripe Payment**
-![stripe](readme-images/stripe.png)
+![stripe](docs/stripe.png)
 **Payment Success**
-![success](readme-images/success.png)
+![success](docs/success.png)
 **404 Error**
-![404](readme-images/404.png)
+![404](docs/404.png)
 **500 Error**
-![500](readme-images/500.png)
+![500](docs/500.png)
 
 ### Target Audience
 
@@ -107,51 +107,51 @@ The target audience for Kickswap is the sneaker community of Australia and anyon
 
 Originally I didn't about the difficulty of having multiple pictures per listings and had the listings less self contained. I also thought it would be possible to have message popups in the corner of the screen.
 
-![wireframe-homepage](readme-images/wire-home.png)
+![wireframe-homepage](docs/wire-home.png)
 
 ### New
 
-![wireframe-new-listing](readme-images/wire-new.png)
+![wireframe-new-listing](docs/wire-new.png)
 
 ### Show
 
 Again my show had an additional picture in my wireframe and also doesn't have the message user button.
 
-![wireframe-show-listing](readme-images/wire-show.png)
+![wireframe-show-listing](docs/wire-show.png)
 
 ### Manage
 
 Manage turned into the account page and is missing the edit function here.
 
-![wireframe-manage-listing](readme-images/wire-manage.png)
+![wireframe-manage-listing](docs/wire-manage.png)
 
 ### Messages
 
 Messages is mostly unchanged, each users message is contained in it's own bubble now.
 
-![wireframe-messages](readme-images/wire-messages.png)
+![wireframe-messages](docs/wire-messages.png)
 
 ### Sign Up
 
 Sign up is mostly the same but a username field was added.
 
-![wireframe-signup](readme-images/wire-signup.png)
+![wireframe-signup](docs/wire-signup.png)
 
 ### Log In
 
 Log in is mostly the same but without the reset password and sign up links.
 
-![wireframe-login](readme-images/wire-login.png)
+![wireframe-login](docs/wire-login.png)
 
 ### Payment Success
 
 Payment success is mostly the same but now without the images.
 
-![wireframe-payment-success](readme-images/wire-success.png)
+![wireframe-payment-success](docs/wire-success.png)
 
 ## R14 - ERD
 
-![kickswap-erd](readme-images/kickswap-erd.png)
+![kickswap-erd](docs/kickswap-erd.png)
 
 ## R15 - Explain the different high-level components (abstractions) in your app
 
@@ -275,16 +275,16 @@ end
 
 Initial Trello board on November 5th. Due dates were not used for this project due to the lack of chronological necessity in the build. Readme tasks are well defined but app tasks need to be further fleshed out as I approach aspects of the build. Styling tasks to be added as I see necessary.
 
-![trello-november-5th](readme-images/trello-nov5.png)
+![trello-november-5th](docs/trello-nov5.png)
 
 Basic functionality of the app completed at this point. Starting to find more tasks that need doing and adding to the board.
 
-![trello-november-9th](readme-images/trello-nov9.png)
+![trello-november-9th](docs/trello-nov9.png)
 
 More tasks have been added as previous tasks were completed. Constantly finding more small tasks that need taking care of at some point. Bugs list added at this point.
 
-![trello-november-12th](readme-images/trello-nov12.png)
+![trello-november-12th](docs/trello-nov12.png)
 
 Backlog and bugs have filled up more but the project MVP is almost complete. Huge amount of styling also done at this point, but still a lot to go.
 
-![trello-november-16th](readme-images/trello-nov16.png)
+![trello-november-16th](docs/trello-nov16.png)
