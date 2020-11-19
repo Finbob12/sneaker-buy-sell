@@ -1,14 +1,12 @@
 # README
 
-## notes
- N+1 on every iterative method.
- 
-
 ## R7 - Identification of the problem you are trying to solve by building this particular marketplace app
 
 A two way marketplace for sneakers does not currently exist in Australia that is widely used. There are a few international marketplaces like 'Goat' and 'StockX' that are widely used. These function heavily as a third party that takes a large cut of sales and manages the buying and selling themselves. The closest model that fits the scope of 'KICKSWAP' is 'Depop', which is not focused on shoes and again is an international company. 'KICKSWAP' aims to be the premier marketplace for buying and selling sneakers in a solely Australian focused market. 'KICKSWAP' will operate in a model similar to 'Gumtree', wherein users can be buyers or sellers. These buyers and sellers are then responsible for the management of their sales and purchases with 'KICKSWAP' merely being a platform. The removal of a sales cut also means sellers can save more and pass those savings on to the buyers.
 
 ## R8 - Why is it a problem that needs solving?
+
+This problem needs solving because both sneaker buyers and sellers need an Australian website that understands the needs and unique ecosystem of shoes within Australia. The large sales cuts that other shoe and clothing marketplaces take from sellers is also an issue. As a majority of people buying and selling sneakers are not those who are doing it professionally, they should not have large amounts of sales profit taken from them.
 
 ## R9 - A link (URL) to your deployed app
 
@@ -22,62 +20,92 @@ A two way marketplace for sneakers does not currently exist in Australia that is
 
 ### Purpose
 
+The purpose of Kickswap is to create an open platform for Australian sneaker enthusiasts to buy and sell sneakers with each other, without a company taking a large cut of the sales. This will fill a hole in the current market.
+
 ### Functionality/Features
 
-### Sitemap
+**Listings:** Any user can create a listing on Kickswap for other users to view and purchase. These listings require a brand, style, price, size, picture and description. Any and all of these details can be updated by the user at any point after creating their listing. These listings may also be deleted by the user who created them at any time. If a listing is purchased by a user, the listing is then marked as sold and will no longer show up for other users to view. Buyers and sellers can then organise delivery or pick-up of the listing.
+
+**Sitemap:**
+
+![Kickswap-sitemap](readme-images/kickswap-sitemap.png)
 
 ### Screenshots
 
+**Home**
+![homepage](readme-images/home.png)
+![homepage-continued](readme-images/home-cont.png)
+**New/Edit**
+![new/edit](readme-images/new.png)
+**Show**
+![show](readme-images/show.png)
+**Sign Up**
+![signup](readme-images/signup.png)
+**Log In**
+![login](readme-images/login.png)
+**Password Reset**
+![password-reset](readme-images/password-reset.png)
+**Edit Account**
+![edit-account](readme-images/edit-account.png)
+**Conversations**
+![conversations](readme-images/conversations.png)
+**Messages**
+![messages](readme-images/messages.png)
+**Stripe Payment**
+![stripe](readme-images/stripe.png)
+**Payment Success**
+![success](readme-images/success.png)
+**404 Error**
+![404](readme-images/404.png)
+**500 Error**
+![500](readme-images/500.png)
+
 ### Target Audience
 
-### Tech Stack
+The target audience for Kickswap is the sneaker community of Australia and anyone else that is looking to buy and/or sell shoes in Australia. This audience will be able to sell their shoes without our site taking a large cut of each sale. Making this a more friendly site to shoe sellers, and hopefully these sellers can pass savings on to the buyers.
 
+### Tech stack
+
+**Front-end:** HTML5, CSS3, SCSS, Embedded Ruby, Bootstrap 4, Javascript.
+
+**Back-end:** Ruby 2.7.0, Ruby on Rails 6.0.3.
+
+**Database:** Postgresql.
+
+**Deployment:** Heroku.
+
+**Additional:** Stripe, Devise, Ultrahook, AWS S3, AWS IAM.
+
+**DevOps:** Git, Github, VS Code, Balsamiq Wireframes.
 
 ## R12 - User stories
 
-The app does not distinguish between buyers and sellers, all profiles are set with the ability to create or purchase listings however the user stories are broken down between buyers and sellers to show different app functions.
-
-User management:
-
-- As a site visitor, I want to be able to create an account in order to log in and become a buyer and seller.
-- As a buyer or seller, I want to be able to enter my email and password to log in.
-- As a buyer or seller, I want to be able to logout out of my account at any time.
-- As a buyer or seller, I want to be able to delete my account if I no longer want to be a part of the site.
-- As a buyer or seller, I want to be able to add details to my profile in order to show other users more about me.
-- As a buyer or seller, I want to be able to delete my account in case I change my mind.
-
-Listings:
-
-- As a site visitor, I want to be able to see an overview of listings without logging in.
-- As a seller, I want to be able to create listings in order to sell my shoes.
-- As a seller, I want to be able to upload a name, bio, price and photo of my shoe in order to sell it.
-- As a buyer, I want to be able to search for shoes, in order to find ones with the experience I am looking for.
-- As a buyer or seller, I want to be able to like/favourite other listings in order to view them in my profile for later.
-- As a seller, I want to be able to edit and delete my listings in order to reflect correct information.
-- As a seller, I want to be able to favourite my own listing in order to increase it's popularity.
-- As a seller, I want to be able to view my current listings in one place in order to keep track of what I am selling.
-- As a seller, I want to be able to reply to buyers messages in order to answer questions about my listings.
-- As a buyer, I want to be able to message sellers about listings in order to find out more information.
-- As a buyer or seller, I want to be notified when I receive a new message so I don't have to keep checking my inbox.
-
-Purchases:
-
-- As a buyer, I want to be able to purchase shoes from other users listings.
-- As a seller, I want to be able to sell my shoe through the site in order to receive money from the buyer.
-- As a buyer, I want to be able to access my purchase receipts in order to keep track of my purchases.
-- As a seller, I want my purchased shoes to be removed from view so others don't try to purchase it again.
-- As a buyer, I want to be able to view a list of shoes that I have purchased in order to keep track of my purchases.
-
-Authentication & Authorisation:
-
-- As a buyer or seller, I do not want other users to be able to access my account in order to keep my data safe.
-- As a seller, I do not want other users to be able to edit or delete my listings.
-- As a buyer or seller, I do not want other users to see my favourites.
-- As a seller, I do not want to see options to buy my listings.
+- As a visitor with no account, I want to be able to sign up to become a user.
+- As a visitor with no account, I want to be able to view all listings.
+- As a user, I want to be able to log in to my account.
+- As a user, I want to be able to log out out of my account.
+- As a user, I want to be able to cancel my account.
+- As a user, I want to be able to edit the details of my account I entered when it was created.
+- As a user, I want to be able to search for shoes listed on the site.
+- As a user, I want to be able to message other users about their listings.
+- As a user, I want to be able to see I have a new message without checking my conversations.
+- As a user, I do not want other users to see my account page.
+- As a user, I do not want other users to see my account details.
+- As a user, I do not want other users to be able to edit my listings.
+- As a user, I do not want other users to be able to delete my listings.
+- As a user, I want to be able to create new listings.
+- As a user, I want to be able to edit listings I have created.
+- As a user, I want to be able to delete listings I have created.
+- As a user, I want to be able to view all listings I have created.
+- As a user, I want to be able to purchase listings.
+- As a user, I want to be able to sell my listing on the site.
+- As a user, I want to be able to have my purchased shoes unlisted so other users don't think they're unsold.
 
 ## R13 - Wireframes
 
 ### Home
+
+Originally I didn't about the difficulty of having multiple pictures per listings and had the listings less self contained. I also thought it would be possible to have message popups in the corner of the screen.
 
 ![wireframe-homepage](readme-images/wire-home.png)
 
@@ -87,25 +115,37 @@ Authentication & Authorisation:
 
 ### Show
 
+Again my show had an additional picture in my wireframe and also doesn't have the message user button.
+
 ![wireframe-show-listing](readme-images/wire-show.png)
 
 ### Manage
+
+Manage turned into the account page and is missing the edit function here.
 
 ![wireframe-manage-listing](readme-images/wire-manage.png)
 
 ### Messages
 
+Messages is mostly unchanged, each users message is contained in it's own bubble now.
+
 ![wireframe-messages](readme-images/wire-messages.png)
 
 ### Sign Up
+
+Sign up is mostly the same but a username field was added.
 
 ![wireframe-signup](readme-images/wire-signup.png)
 
 ### Log In
 
+Log in is mostly the same but without the reset password and sign up links.
+
 ![wireframe-login](readme-images/wire-login.png)
 
 ### Payment Success
+
+Payment success is mostly the same but now without the images.
 
 ![wireframe-payment-success](readme-images/wire-success.png)
 
