@@ -74,7 +74,7 @@ The target audience for Kickswap is the sneaker community of Australia and anyon
 
 **Deployment:** Heroku.
 
-**Additional:** Stripe, Devise, Ultrahook, AWS S3, AWS IAM.
+**Additional:** Stripe, Devise, Ultrahook, AWS S3.
 
 **DevOps:** Git, Github, VS Code, Balsamiq Wireframes.
 
@@ -155,13 +155,45 @@ Payment success is mostly the same but now without the images.
 
 ## R15 - Explain the different high-level components (abstractions) in your app
 
+Kickswap is a two sided marketplace built with Ruby on Rails, a framework built with the Ruby programming language. Kickswaps database is handled by Postgresql. A relational database management system that Rails integrates with efficiently. This database is built with various models detailed in the ERD (entity relationship diagram) above. Validation and sanitization are present within each of these models to prevent their manipulation by anything other than allowed parameters given by the Rails app. When a user signs up for an account, their authorization scope is then decided by Devise via logic coded into the app. This authorisation scope then limits the access to creating, editing, deleting and buying listings. As well as the messaging system in the app. Creating listings also uses Amazon S3 to upload and store images in a cloud environment. Listings on the site can be searched and sorted with the Ransack gem. Listings are limited with the will_paginate gem so only 8 listings display per page, reduced SQL queries. Messaging is handled in app by creating database entries that are contained in a conversation table between two users. Stripe handles payment externally through its API, handing off any legality and other related issues to Stripe, simplifying the process. The stripe webhook then handles the state change for sold listings. Logic in the app will the mark the listing as sold and remove it from the viewable listings.
+
 ## R16 - Detail any third party services that your app will use
 
-DEVISE - FAKER - STRIPE - ULTRAHOOK - AWS S3 - RANSACK - PAGINATE
+**Devise:** The Devise gem is used to handle user management within the app. Devise provides inbuilt controller functions and views to assist with sign up, log in and log out. Devise also provides built in helper functions so scope can be built into your application's logic easily. Allowing for many things such as messaging and account page viewing to be limited to their owners, as well as editing and deletion of listings and accounts.
+
+**Faker:** The Faker gem was used to quickly populate the database with users and listings when the app was initially being built. Faker provides in built methods to use with the seed file to create database entries.
+
+**Stripe:** The Stripe gem is included to hook up to the Stripe API. This provides a secure and trusted payment method for the application. Having payment handled by a trusted third party removes the need to deal with payment legality.
+
+**Ultrahook:** Ultrahook was used to provide a locally testable webhook for Stripe.
+
+**AWS S3:** AWS S3 is used for image uploading and storage for listings in the app. These images are then stored in the cloud, removing the need for in app storage.
+
+**Ransack:** The Ransack gem is used to provide search and sort functions for the listings on the main page. Ransack has built in methods to provide search and sort in a simple manner.
+
+**Will_Paginate:** The Will_Paginate gem is used to limit listings displayed per page for the main page. This limitation increasing speed and effeciency in the app by limited SQL queries.
+
+**Bootstrap:** Bootstrap is a framework used for front end styling. It uses a combination of CSS and Javascript to provide easy styling functions in the embedded Ruby files.
 
 ## R17 - Describe your projects models in terms of the relationships (active record associations) they have with each other
 
+A user has many listings / A listing belongs to a user
+A user has many messages / A message belongs to a user
+A user has many conversations / conversations belong to a user
+A listing has one attached picture / a picture belongs to a listing
+A conversation has many messages / A message belongs to a conversation
+
 ## R18 - Discuss the database relations to be implemented in your application
+
+**User:** The user model has the most relations in the app. When a listing is created it must belong to a user, and a user can create as many listings as they want. A user can also create messages, this will also create a conversation if one does not already. Both messaes and conversation will then belong to the user.
+
+**Listing:** The listing model has each row created already belonging to a user. The listing also has an attached picture as it is created.
+
+**Active Storage:** The active storage models exist to transfer data from the database to AWS S3. This relationship is initialised when a listing is created. A picture must be uploaded with a new listing, and belongs to the listing.
+
+**Conversation:** The conversation model exists only to hold a sender_id and recipient_id to match these against users when a message is initialised. A conversation will always belong to two users, the sender and the recipient. A conversation will also have many messages.
+
+**Messages:** The message model has each row created belonging to both a user and a conversation.
 
 ## R19 - Provide your database schema design
 
@@ -238,6 +270,8 @@ end
 ```
 
 ## R20 - Trello
+
+[trello-board](https://trello.com/b/fkA4LkT9/ruby-marketplace)
 
 Initial Trello board on November 5th. Due dates were not used for this project due to the lack of chronological necessity in the build. Readme tasks are well defined but app tasks need to be further fleshed out as I approach aspects of the build. Styling tasks to be added as I see necessary.
 
